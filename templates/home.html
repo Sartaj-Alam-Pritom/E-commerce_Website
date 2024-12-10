@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+{% include 'slider.html' %}
+
+
+<!-- Latest Product Begin -->
+<section class="latest-products spad mt-3">
+    <div class="container">
+        <div class="product-filter">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h2>Featured Categories</h2>
+                    </div>
+                    <ul class="product-controls">
+                        <li data-filter="*">All</li>
+                        {% for category in featured_categories %}
+                        <li data-filter=".{{category.title}}">{{category.title|title}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="product-list">
+            {% for category in featured_categories %}
+            {% for product in category.products.all %}
+            <div class="col-lg-3 col-sm-6 mix {{category.slug}}">
+                <div class="single-product-item">
+                    <figure>
+                        <a href="{% url 'product-details' product.slug %}"><img style="height:320px ;" src="{{product.thumbnail}}" alt=""></a>
+                    </figure>
+                    <div class="product-text">
+                        <a class="text-decoration-none" href="{% url 'product-details' product.slug %}"><h6>{{product.title|truncatewords:10}}</h6></a>
+                        <p>Tk {{ product.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Latest Product End -->
+
+<section class="latest-products spad">
+    <div class="container">
+        <div class="product-filter">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h2>Featured Products</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="product-list">
+            {% for product in featured_products %}
+            <div class="col-lg-3 col-sm-6 mix ">
+                <div class="single-product-item">
+                    <figure>
+                        <a href="{% url 'product-details' product.slug %}"><img style="height:320px ;" src="{{product.thumbnail}}" alt=""></a>
+                    </figure>
+                    <div class="product-text">
+                        <a class="text-decoration-none" href="{% url 'product-details' product.slug %}"><h6>{{product.title}}</h6></a>
+                        <p>Tk {{ product.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="features-section spad">
+    <div class="features-ads">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-features-ads first">
+                        <img src="{% static 'img/icons/f-delivery.png' %}" alt="">
+                        <h4>Home delivery</h4>
+                        <p>Experience the convenience of fast and reliable home delivery for all your orders. Shop with ease and enjoy stress-free service right to your doorstep! </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-features-ads second">
+                        <img src="{% static 'img/icons/coin.png' %}" alt="">
+                        <h4>100% Money back </h4>
+                        <p>Shop confidently with our 100% money-back guarantee. Your satisfaction is our priority! </p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-features-ads">
+                        <img src="{% static 'img/icons/chat.png' %}" alt="">
+                        <h4>Online support 24/7</h4>
+                        <p>We’re here for you anytime, anywhere. Get round-the-clock assistance from our support team. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lookbok Section Begin -->
+<section class="lookbok-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-1">
+                <div class="lookbok-left">
+                    <div class="section-title">
+                        <h2>About Us</h2>
+                    </div>
+                    <p>We are <b>a team</b>, founders of <b>Urban Threads</b>. Founded in <b>2024</b>, our goal was simple: to make high-quality, stylish fashion accessible to university students. What began as a passion for offering affordable, trendy apparel has grown into a global brand, helping thousands of customers express their style. </p>
+                    <p>At Urban Threads, we’re committed to providing the perfect shopping experience with a wide range of clothing that fits every student’s lifestyle. Looking ahead, we aim to expand and continue offering fashion that lets our customers wear the vibe and live the style.</p>
+                    <a href="#" class="primary-btn look-btn">See More</a>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="lookbok-pic">
+                    <img src="{% static 'img/lookboknew.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Lookbok Section End -->
+
+<!-- Logo Section Begin -->
+<div class="logo-section spad">
+    <div class="logo-items owl-carousel">
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-1' %}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-2.png' %}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-3.png' %}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-4.png' %}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-5.png' %}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-6.png' %}" alt="">
+        </div>
+        <div class="logo-item">
+            <img src="{% static 'img/logo/logo-7.png' %}" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

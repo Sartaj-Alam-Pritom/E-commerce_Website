@@ -1,0 +1,60 @@
+{% load static %}
+<header class="header-section">
+    <div class="container-fluid">
+        <div class="inner-header">
+            <div style="height: 70px; width: 120px; position: absolute; top: 10px; left: 30px;" class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/logo.png' %}" alt="Logo">
+                </a>
+            </div>                      
+            <div class="header-right">
+                <img src="{% static 'img/icons/search.png' %}" alt="" class="search-trigger">
+                <a href="{% url 'cart' %}">
+                    <img src="{% static 'img/icons/bag.png' %}" alt="">
+                    <span>{{cart|length}}</span>
+                </a>
+            </div>
+            <div class="user-access">
+                <a href="#">Register</a>
+                <a href="#" class="in">Sign in</a>
+            </div>
+            <nav class="main-menu mobile-menu">
+                <ul>
+                    <li><a class="" href="{% url 'home' %}">Home</a></li>
+                    <li><a class="" href="{% url 'product-list' %}">Product</a></li>
+                    <li><a href="#">Categories</a>
+                        <ul class="sub-menu">
+                            {% for category in categories %}
+                            <li><a href="{% url 'category-details' category.slug %}">{{category.title|title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="header-info">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="header-item">
+                    <img src="{% static 'img/icons/delivery.png' %}" alt="">
+                    <p>Free delivery on orders over Tk 1000 in Bangladesh</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-left text-lg-center">
+                <div class="header-item">
+                    <img src="{% static 'img/icons/voucher.png' %}" alt="">
+                    <p>20% Student Discount</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-left text-xl-right">
+                <div class="header-item">
+                <img src="{% static 'img/icons/sales.png' %}" alt="">
+                <p>30% off on dresses. Use code: 30OFF</p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
